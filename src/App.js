@@ -219,8 +219,8 @@ export default function App() {
               WebkitTextFillColor: "transparent",
               backgroundClip: "text"
             }}>Agentic Search</span>{" "}
-            <span style={{ color: "#f0f0f0" }}>Patterns</span>{" "}
-            <span style={{ color: "#f0f0f0" }}>for Visual Asset</span>{" "}
+            <span style={{ color: "#f0f0f0" }}>Design Patterns</span>{" "}
+            <span style={{ color: "#f0f0f0" }}>for Visual Media</span>{" "}
             <span style={{
               background: "linear-gradient(135deg, #F59E0B 0%, #EC4899 100%)",
               WebkitBackgroundClip: "text",
