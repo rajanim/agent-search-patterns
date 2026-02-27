@@ -142,10 +142,10 @@ const categories = [
 ];
 
 const categoryStats = {
-  "Reflection":  { count: 3, desc: "Self-audits and recalibrates search results" },
-  "Tool Use":    { count: 3, desc: "Runs specialist tools for ranking" },
-  "Planning":    { count: 2, desc: "Decomposes intent into staged queries" },
-  "Multi-Agent": { count: 2, desc: "Coordinates parallel agents for compliance" }
+  "Reflection":  { count: 3, desc: "Review outputs, find errors, revise strategy, and improve response quality." },
+  "Tool Use":    { count: 3, desc: "Call external tools to retrieve, compute, verify, and act reliably." },
+  "Planning":    { count: 2, desc: "Break goals into steps, prioritize tasks, then execute systematically." },
+  "Multi-Agent": { count: 2, desc: "Coordinate multiple specialized agents to debate, collaborate, and solve problems." }
 };
 
 export default function App() {
@@ -228,7 +228,7 @@ export default function App() {
             }}>Platforms</span>
           </h1>
 
-          <p style={{ color: "#555", fontSize: "14px", letterSpacing: "1.5px", margin: "0 0 6px", fontWeight: "700" }}>
+          <p style={{ color: "#555", fontSize: "18px", letterSpacing: "1.5px", margin: "0 0 6px", fontWeight: "700" }}>
             10 USE CASES &nbsp;·&nbsp; 4 AGENTIC PATTERNS &nbsp;·&nbsp; PRODUCTION ARCHITECTURES
           </p>
           <p style={{ color: "#3a3a3a", fontSize: "13px", margin: 0, fontStyle: "italic" }}>
@@ -239,10 +239,10 @@ export default function App() {
         {/* Stat cards */}
         <div style={{
           display: "grid",
-          gap: "16px",
+          gap: "20px",
           marginTop: "40px",
           width: "100%",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))"
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))"
         }}>
           {Object.entries(categoryStats).map(([cat, { desc }]) => {
             const color = categories.find(c => c.name === cat)?.color;
@@ -251,11 +251,11 @@ export default function App() {
                 background: `${color}0a`,
                 border: `1px solid ${color}22`,
                 borderLeft: `3px solid ${color}`,
-                padding: "14px 20px",
-                minHeight: "88px"
+                padding: "20px 24px",
+                minHeight: "120px"
               }}>
-                <div style={{ fontSize: "11px", color, letterSpacing: "2px", marginTop: "3px", fontWeight: "700" }}>{cat.toUpperCase()}</div>
-                <div style={{ fontSize: "12px", color: "#4a4a4a", marginTop: "7px" }}>{desc}</div>
+                <div style={{ fontSize: "15px", color, letterSpacing: "1.2px", marginTop: "2px", fontWeight: "700" }}>{cat.toUpperCase()}</div>
+                <div style={{ fontSize: "18px", color: "#a3a3a3", marginTop: "12px", lineHeight: 1.5 }}>{desc}</div>
               </div>
             );
           })}
@@ -268,20 +268,20 @@ export default function App() {
         borderBottom: "1px solid #141414", background: "#0a0a0a",
         flexWrap: "wrap", alignItems: "center"
       }}>
-        <span style={{ fontSize: "10px", color: "#333", letterSpacing: "3px", marginRight: "8px" }}>FILTER BY PATTERN</span>
+        <span style={{ fontSize: "14px", color: "#333", letterSpacing: "1.6px", marginRight: "10px", fontWeight: "700" }}>FILTER BY PATTERN</span>
         {categories.map(cat => (
           <button
             key={cat.name}
             onClick={() => setActiveCategory(cat.name)}
             style={{
-              padding: "7px 18px",
+              padding: "10px 22px",
               background: activeCategory === cat.name
                 ? `linear-gradient(135deg, ${cat.color}dd, ${cat.color}99)`
                 : "transparent",
               border: `1px solid ${activeCategory === cat.name ? "transparent" : cat.color + "44"}`,
               color: activeCategory === cat.name ? "#000" : cat.color,
-              fontSize: "12px",
-              letterSpacing: "1.5px",
+              fontSize: "14px",
+              letterSpacing: "1px",
               cursor: "pointer",
               fontFamily: "inherit",
               fontWeight: "700",
@@ -291,7 +291,7 @@ export default function App() {
           >
             {cat.name.toUpperCase()}
             {cat.name !== "All" && (
-              <span style={{ marginLeft: "7px", opacity: 0.7, fontSize: "11px" }}>
+              <span style={{ marginLeft: "8px", opacity: 0.7, fontSize: "13px" }}>
                 {categoryStats[cat.name]?.count}
               </span>
             )}
@@ -300,7 +300,13 @@ export default function App() {
       </div>
 
       {/* ── Cards ── */}
-      <div style={{ padding: "24px 48px 64px", maxWidth: "1280px" }}>
+      <div style={{
+        padding: "24px clamp(12px, 2vw, 28px) 64px",
+        maxWidth: "none",
+        width: "100%",
+        margin: "0 auto",
+        boxSizing: "border-box"
+      }}>
         {filtered.map((item) => {
           const isExpanded = expandedId === item.id;
           return (
@@ -312,6 +318,7 @@ export default function App() {
                 background: isExpanded
                   ? `linear-gradient(135deg, #111 0%, ${item.categoryColor}06 100%)`
                   : "#0c0c0c",
+                border: "1px solid #141414",
                 marginBottom: "8px",
                 cursor: "pointer",
                 transition: "background 0.2s",
@@ -322,9 +329,9 @@ export default function App() {
               {/* Watermark rank */}
               <div style={{
                 position: "absolute",
-                right: "64px", top: "50%",
+                right: "clamp(20px, 6vw, 64px)", top: "50%",
                 transform: "translateY(-50%)",
-                fontSize: "72px",
+                fontSize: "clamp(46px, 7vw, 72px)",
                 fontWeight: "900",
                 color: isExpanded ? `${item.categoryColor}09` : "#0f0f0f",
                 lineHeight: 1,
@@ -336,7 +343,7 @@ export default function App() {
               {/* Card header */}
               <div style={{
                 display: "flex", alignItems: "flex-start", gap: "20px",
-                padding: "22px 64px 22px 22px",
+                padding: "22px clamp(42px, 6vw, 64px) 22px 22px",
                 position: "relative"
               }}>
                 <div style={{
@@ -350,7 +357,7 @@ export default function App() {
                   {/* Title row */}
                   <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap", marginBottom: "12px" }}>
                     <span style={{ fontSize: "22px" }}>{item.icon}</span>
-                    <h3 style={{ margin: 0, fontSize: "17px", fontWeight: "700", color: "#f0f0f0" }}>
+                    <h3 style={{ margin: 0, fontSize: "22px", fontWeight: "700", color: "#f0f0f0" }}>
                       {item.title}
                     </h3>
                     <span style={{
@@ -358,7 +365,7 @@ export default function App() {
                       background: `${item.categoryColor}18`,
                       border: `1px solid ${item.categoryColor}33`,
                       color: item.categoryColor,
-                      fontSize: "10px",
+                      fontSize: "12px",
                       letterSpacing: "2px",
                       fontWeight: "700"
                     }}>
@@ -369,7 +376,7 @@ export default function App() {
                       background: "#111",
                       border: "1px solid #222",
                       color: "#555",
-                      fontSize: "10px",
+                      fontSize: "12px",
                       letterSpacing: "0.8px"
                     }}>
                       {item.pattern}
@@ -377,16 +384,16 @@ export default function App() {
                   </div>
 
                   {/* Pipeline steps */}
-                  <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: "0" }}>
+                  <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: "4px 0" }}>
                     {item.steps.map((step, i) => (
-                      <div key={i} style={{ display: "flex", alignItems: "center" }}>
+                      <div key={i} style={{ display: "flex", alignItems: "center", minWidth: 0 }}>
                         <div style={{
                           padding: "4px 12px",
                           background: "#141414",
                           border: "1px solid #1e1e1e",
-                          fontSize: "12px",
+                          fontSize: "14px",
                           color: "#555",
-                          whiteSpace: "nowrap"
+                          whiteSpace: "normal"
                         }}>{step}</div>
                         {i < item.steps.length - 1 && (
                           <span style={{ color: item.categoryColor, fontSize: "11px", padding: "0 2px", opacity: 0.5 }}>▸</span>
@@ -407,14 +414,14 @@ export default function App() {
 
               {/* Expanded content */}
               {isExpanded && (
-                <div style={{ padding: "0 26px 28px 80px" }}>
+                <div style={{ padding: "0 clamp(16px, 3vw, 26px) 28px clamp(16px, 7vw, 80px)" }}>
                   <div style={{
                     height: "1px",
                     background: `linear-gradient(90deg, ${item.categoryColor}55, transparent)`,
                     marginBottom: "22px"
                   }} />
 
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px" }}>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "14px" }}>
                     {/* Before */}
                     <div style={{
                       background: "#080808",
@@ -423,12 +430,12 @@ export default function App() {
                       padding: "20px"
                     }}>
                       <div style={{
-                        fontSize: "11px", letterSpacing: "2px", color: "#B91919bb",
+                        fontSize: "13px", letterSpacing: "2px", color: "#B91919bb",
                         marginBottom: "12px", fontWeight: "700"
                       }}>
                         BEFORE — TRADITIONAL
                       </div>
-                      <p style={{ margin: 0, fontSize: "14px", color: "#555", lineHeight: 1.8 }}>
+                      <p style={{ margin: 0, fontSize: "18px", color: "#555", lineHeight: 1.8 }}>
                         {item.traditional}
                       </p>
                     </div>
@@ -441,12 +448,12 @@ export default function App() {
                       padding: "20px"
                     }}>
                       <div style={{
-                        fontSize: "11px", letterSpacing: "2px", color: item.categoryColor,
+                        fontSize: "13px", letterSpacing: "2px", color: item.categoryColor,
                         marginBottom: "12px", fontWeight: "700"
                       }}>
                         AFTER — AGENTIC
                       </div>
-                      <p style={{ margin: 0, fontSize: "14px", color: "#b0b0b0", lineHeight: 1.8 }}>
+                      <p style={{ margin: 0, fontSize: "18px", color: "#b0b0b0", lineHeight: 1.8 }}>
                         {item.agentic}
                       </p>
                     </div>
@@ -461,12 +468,12 @@ export default function App() {
                     padding: "20px"
                   }}>
                     <div style={{
-                      fontSize: "11px", letterSpacing: "2px", color: item.categoryColor,
+                      fontSize: "13px", letterSpacing: "2px", color: item.categoryColor,
                       marginBottom: "10px", fontWeight: "700"
                     }}>
                       DESIGN PATTERN — {item.pattern.toUpperCase()}
                     </div>
-                    <p style={{ margin: 0, fontSize: "14px", color: "#777", lineHeight: 1.8 }}>
+                    <p style={{ margin: 0, fontSize: "18px", color: "#777", lineHeight: 1.8 }}>
                       {item.patternDetail}
                     </p>
                   </div>
