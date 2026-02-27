@@ -142,10 +142,10 @@ const categories = [
 ];
 
 const categoryStats = {
-  "Reflection":  { count: 3, desc: "Agent evaluates, self-audits, and recalibrates its own outputs" },
-  "Tool Use":    { count: 3, desc: "Specialist tools for visual intelligence" },
-  "Planning":    { count: 2, desc: "Multi-stage creative decomposition; decomposes intent into stages" },
-  "Multi-Agent": { count: 2, desc: "Coordinates parallel specialist agents; parallel agent verification and federation" }
+  "Reflection":  { count: 3, desc: "Self-audits and recalibrates search results" },
+  "Tool Use":    { count: 3, desc: "Runs specialist tools for ranking" },
+  "Planning":    { count: 2, desc: "Decomposes intent into staged queries" },
+  "Multi-Agent": { count: 2, desc: "Coordinates parallel agents for compliance" }
 };
 
 export default function App() {
@@ -237,7 +237,13 @@ export default function App() {
         </div>
 
         {/* Stat cards */}
-        <div style={{ display: "flex", gap: "16px", marginTop: "40px", flexWrap: "wrap" }}>
+        <div style={{
+          display: "grid",
+          gap: "16px",
+          marginTop: "40px",
+          width: "100%",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))"
+        }}>
           {Object.entries(categoryStats).map(([cat, { desc }]) => {
             const color = categories.find(c => c.name === cat)?.color;
             return (
@@ -246,7 +252,7 @@ export default function App() {
                 border: `1px solid ${color}22`,
                 borderLeft: `3px solid ${color}`,
                 padding: "14px 20px",
-                minWidth: "180px"
+                minHeight: "88px"
               }}>
                 <div style={{ fontSize: "11px", color, letterSpacing: "2px", marginTop: "3px", fontWeight: "700" }}>{cat.toUpperCase()}</div>
                 <div style={{ fontSize: "12px", color: "#4a4a4a", marginTop: "7px" }}>{desc}</div>
