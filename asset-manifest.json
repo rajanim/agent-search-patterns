@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/agentic-search/static/css/main.e6c13ad2.css",
+    "main.js": "/agentic-search/static/js/main.cfc0bd56.js",
+    "static/js/453.f506fe66.chunk.js": "/agentic-search/static/js/453.f506fe66.chunk.js",
+    "index.html": "/agentic-search/index.html",
+    "main.e6c13ad2.css.map": "/agentic-search/static/css/main.e6c13ad2.css.map",
+    "main.cfc0bd56.js.map": "/agentic-search/static/js/main.cfc0bd56.js.map",
+    "453.f506fe66.chunk.js.map": "/agentic-search/static/js/453.f506fe66.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.cfc0bd56.js"
+  ]
+}
