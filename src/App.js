@@ -142,10 +142,10 @@ const categories = [
 ];
 
 const categoryStats = {
-  "Reflection":  { count: 3, desc: "Agent evaluates and recalibrates its own outputs" },
+  "Reflection":  { count: 3, desc: "Agent evaluates, self-audits, and recalibrates its own outputs" },
   "Tool Use":    { count: 3, desc: "Specialist tools for visual intelligence" },
-  "Planning":    { count: 2, desc: "Multi-stage creative decomposition" },
-  "Multi-Agent": { count: 2, desc: "Parallel agent verification and federation" }
+  "Planning":    { count: 2, desc: "Multi-stage creative decomposition; decomposes intent into stages" },
+  "Multi-Agent": { count: 2, desc: "Coordinates parallel specialist agents; parallel agent verification and federation" }
 };
 
 export default function App() {
@@ -197,7 +197,6 @@ export default function App() {
               fontWeight: "700",
               clipPath: "polygon(0 0, calc(100% - 6px) 0, 100% 100%, 0 100%)"
             }}>PRINCIPAL SEARCH AI</div>
-            <div style={{ color: "#333", fontSize: "12px", letterSpacing: "2px" }}>// VISUAL ASSET PLATFORM</div>
           </div>
 
           <div style={{ marginBottom: "6px" }}>
@@ -218,9 +217,9 @@ export default function App() {
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text"
-            }}>Agentic Search</span>{" "}
+            }}>Agentic Discovery</span>{" "}
             <span style={{ color: "#f0f0f0" }}>Design Patterns</span>{" "}
-            <span style={{ color: "#f0f0f0" }}>for Visual Media</span>{" "}
+            <span style={{ color: "#f0f0f0" }}>For Media</span>{" "}
             <span style={{
               background: "linear-gradient(135deg, #F59E0B 0%, #EC4899 100%)",
               WebkitBackgroundClip: "text",
@@ -229,7 +228,7 @@ export default function App() {
             }}>Platforms</span>
           </h1>
 
-          <p style={{ color: "#555", fontSize: "14px", letterSpacing: "1.5px", margin: "0 0 6px" }}>
+          <p style={{ color: "#555", fontSize: "14px", letterSpacing: "1.5px", margin: "0 0 6px", fontWeight: "700" }}>
             10 USE CASES &nbsp;·&nbsp; 4 AGENTIC PATTERNS &nbsp;·&nbsp; PRODUCTION ARCHITECTURES
           </p>
           <p style={{ color: "#3a3a3a", fontSize: "13px", margin: 0, fontStyle: "italic" }}>
@@ -239,7 +238,7 @@ export default function App() {
 
         {/* Stat cards */}
         <div style={{ display: "flex", gap: "16px", marginTop: "40px", flexWrap: "wrap" }}>
-          {Object.entries(categoryStats).map(([cat, { count, desc }]) => {
+          {Object.entries(categoryStats).map(([cat, { desc }]) => {
             const color = categories.find(c => c.name === cat)?.color;
             return (
               <div key={cat} style={{
@@ -249,9 +248,8 @@ export default function App() {
                 padding: "14px 20px",
                 minWidth: "180px"
               }}>
-                <div style={{ fontSize: "30px", fontWeight: "800", color, lineHeight: 1 }}>{count}</div>
                 <div style={{ fontSize: "11px", color, letterSpacing: "2px", marginTop: "3px", fontWeight: "700" }}>{cat.toUpperCase()}</div>
-                <div style={{ fontSize: "12px", color: "#4a4a4a", marginTop: "5px" }}>{desc}</div>
+                <div style={{ fontSize: "12px", color: "#4a4a4a", marginTop: "7px" }}>{desc}</div>
               </div>
             );
           })}
